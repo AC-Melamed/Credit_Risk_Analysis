@@ -15,29 +15,36 @@ The results of the subsequent comparative analyses were as follow:
 ### **1) Oversampling Techniques**
 - RandomOverSampler
 The RandomOverSampler algorithm operates according to a 'naive' principle whereby the unbalanced distrubition between majority and minority classifications is resolved by randomly sampling minority datapoints for incorporation into the training dataset until equilibrium is reached.
-![NRO](Images/NRO.png)
+
+![NROS](Images/NRO.png)
 
 - SMOTE
 The SMOTE (Synthetic Minority Oversampling TEchnique) algorithm accomplishes the same goal as the RandomOverSampler using a slightly more sophisticated method.  Where the RandomOverSampler simply reclassifies existing minority datapoints, SMOTE plausibly interpolates new synthetic datapoints collinear with existing training data and incorporates them into the majority set.
+
 ![SMOTE](Images/SMOTE.png)   
 
 ### **2) Undersampling Technique**
 - ClusterCentroids
 The ClusterCentroids algorithm is an undersampling technique which accomplishes equilibrium between the majority and minority data by reducing the majority set to the size of the minority.  This process is based on the identification of 'clusters' or centroids within the majority dataspace, which are reduced down to their best representational datapoints, thus effectvely reducing the size of the overall majority set with minimal loss of information.     
+
 ![CCU](Images/CCU.png)
 
 ### **3) Combintation Over-Undersampling Technique**
 - SMOTEENN
 The SMOTEENN (SMOTE + Edited Nearest Neighbor) algorithm combines SMOTE with the ENN technique.  Edited Nearest Neighbor works by finding the K-nearest neighbor for each datapoint and checking for a classification discrepancy, in which case both the datapoint and its neighbor are removed from the dataset.  The SMOTEENN technique combines the class-agnostic undersampling ability of ENN with the synthetic-interpolative ability of SMOTE such that each new datapoint synthesized by SMOTE is subsequently filtered for valdity through the ENN process.  
-![SMOTEENN](Images/SMOTEENN.png)
 
+![SMOTEENN](Images/SMOTEENN.png)
 
 ### 4) **Ensemble Techniques**
 - BalancedRandomForestClassifier
+The BalancedRandomForestClassifer algorithm employs a forest classifier that uses random undersampling to serially structure the data into increasingly tighter branches based on class assignment.  
 
+![BRFC](Images/BRFC.png)
 
 - EasyEnsembleClassifier
+The EasyEnsembleClassifier also uses random undersampling in conjuction with an ensemble of preexisting "AdaBoost" algorithms trained on balanced sample sets.
 
+![EEC](Images/EEC.png)
 
 --------------------------------
 
