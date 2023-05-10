@@ -17,7 +17,7 @@ The results of the subsequent comparative analyses were as follow:
 
 The RandomOverSampler algorithm operates according to a 'naive' principle whereby the unbalanced distrubition between majority and minority classifications is resolved by randomly sampling minority datapoints for incorporation into the training dataset until equilibrium is reached.
 
-![NROS](Images/NRO.png)
+![NROS](Images/NROS.png)
 
 - SMOTE
 
