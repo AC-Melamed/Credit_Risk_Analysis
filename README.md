@@ -55,7 +55,35 @@ The EasyEnsembleClassifier also uses random undersampling in conjuction with an 
 --------------------------------
 
 ## **Summary**
- 
+The results of this project's data analysis are hereby summarized:
 
-### Recommendation for Alternative Model
-After some additional exploration, including experimentation with increased epoch lengths for the model training period, it appears that the implementation of a random forest classifier would potentially increase the accuracy of the desired predictions for this dataset.  This is because, as was observed when the training period epochs were doubled or even tripled without any significant increase in accuracy, the risk of overfitting for this dataset seems low.  That makes it a possibly ideal fit for random forest classification, which takes advantage of multiple decision trees as a means of resolving issues with accurate classification. 
+- Native Random Oversampling:
+  - Balanced Accuracy Score = 0.6573009382322703
+  - Avg/Total F1 = 0.75
+
+- SMOTE Oversampling:
+  - Balanced Accuracy Score = 0.6622479600626106
+  - Avg/Total F1 = 0.56      
+
+- Cluster Centroid Undersampling:
+  - Balanced Accuracy Score = 0.5442661782548694
+  - Avg/Total F1 = 0.56  
+
+- SMOTEENN Combination Sampling:
+  - Balanced Accuracy Score = 0.639224858524206
+  - Avg/Total F1 = 0.73 
+
+- Balanced Random Forest Classifier:
+  - Balanced Accuracy Score = 0.7885466545953005
+  - Avg/Total F1 = 0.93  
+
+- Easy Ensemble AdaBoost Classifier:
+  - Balanced Accuracy Score = 0.9316600714093861
+  - Avg/Total F1 = 0.97
+
+[NOTE: "F1" is a compound variable which combines the Precision and Recall values of a model]
+
+### Recommendation for Best Suited Model
+Judging purely based on the Balanced Accuracy and F1 scores produced for each model, it would appear that the Easy Ensemble AdaBoost Classifier represents the most suitable option for the task.  However, it is necessary to also consider the nature of the data and task itself and the significance of these measurements in that context.  It should be noted that every model performed poorly across all measures when predicting high risk results, which are the major concern for the company in this case.  Additionally, while Precision and Accuracy scores are certainly still relevant, the most strictly significant measure in the case of this project would be Recall -- the measure of a model's ability to return complete predictions, i.e. minimum false negatives.  This is because the importance of correctly identifying possible risky credit loans is greater than other measures of success which are less likely to result in catastrophic consequences if not optimized for.  
+
+In conclusion, the Easy Ensemble AdaBoost Classifier remains the most optimal model out of all the models tested for the task of predicting credit loan risk, specifically because of its significantly higher Recall measure (0.92) regarding the classification of high risk datapoints.
